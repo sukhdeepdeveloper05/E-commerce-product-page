@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+header nav li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(100% + 37px);
+  height: 3px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  background-color: #ff7d1a;
+  transition: transform 0.2s ease-in-out;
+}
+
+header nav li:hover::after,
+header nav li.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  height: 3px;
+}
+
+.hamburger::before,
+.hamburger::after {
+  position: absolute;
+  top: -6px;
+  width: 100%;
+}
+
+.hamburger::before {
+  top: 6px;
+}
+
+.swiper {
+  overflow: visible;
+}
+
+.swiper-slide-thumb-active {
+  border-color: #ff7d1a;
+  scale: 0.95;
+}
+
+.swiper-thumb::after {
+  content: "";
+  background-color: #fff;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.swiper-thumb:hover::after {
+  opacity: 0.35;
+}
+
+.swiper-slide-thumb-active::after {
+  opacity: 0.5;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: 50%;
+  left: -22px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  background: #fff url(./assets/images/icon-previous.svg) center center/25% no-repeat;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  display: none;
+  cursor: pointer;
+}
+
+.light-box .swiper-button-prev, .light-box .swiper-button-next {
+  display: inline-block;
+}
+
+.swiper-button-next {
+  background: #fff url(./assets/images/icon-next.svg) center center/25% no-repeat;
+  left: auto;
+  right: -22px;
+}
+
+@media screen and (max-width: 600px) {
+  .swiper-button-prev {
+    display: inline-block;
+    left: 10px;
+  }
+  
+  .swiper-button-next {
+    display: inline-block;
+    right: 10px;
+  }
+}
